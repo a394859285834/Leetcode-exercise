@@ -107,3 +107,34 @@ var filter = function(arr, fn) {
     return filteredArr;
 };
 
+//https://leetcode.com/problems/running-sum-of-1d-array/
+
+function runningSum(nums) {
+  for (let i = 1; i < nums.length; i++) {
+    nums[i] += nums[i - 1];
+  }
+  return nums;
+}
+
+//https://leetcode.com/problems/root-equals-sum-of-children/
+
+function checkTree(root) {
+  return root.val === root.left.val + root.right.val;
+}
+
+//https://leetcode.com/problems/invert-binary-tree/
+
+function invertTree(root: TreeNode | null): TreeNode | null {
+    if (root === null){
+      return null
+    }
+    var right = root.right;
+    root.right = invertTree(root.left);
+    root.left = invertTree(right);
+    return root
+    };
+
+//https://leetcode.com/problems/richest-customer-wealth/submissions/1515131107/
+
+const maximumWealth = (accounts: number[][]): number =>
+  Math.max(...accounts.map((holder) => holder.reduce((a, b) => a + b)));
