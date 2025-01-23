@@ -231,5 +231,19 @@ function reduce(nums: number[], fn: Fn, init: number): number {
     return val;
 }
 
+//https://leetcode.com/problems/function-composition/?envType=study-plan-v2&envId=30-days-of-javascript
 
+type F = (x: number) => number;
+
+function compose(functions: F[]): F {
+    return function(x) {
+      return functions.reduceRight((acc, fn) => fn(acc), x);
+    }
+};
+
+//https://leetcode.com/problems/return-length-of-arguments-passed/submissions/1518151008/?envType=study-plan-v2&envId=30-days-of-javascript
+
+function argumentsLength(...args: any[]): number {
+    return args.length;
+}
 
